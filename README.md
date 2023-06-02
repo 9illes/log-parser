@@ -12,7 +12,7 @@ It is an experimental project ported to Go for testing purpose and is not crafte
 1. Download all cloudfront log files from an AWS S3 bucket
 2. Aggregate the log files into a single file using the `scripts\aggregate.sh` script
 3. Preprocess the main log file (split into multiple files)
-4. Start the web interface and open (http://localhost:8080)[http://localhost:8080]
+4. Start the web interface and open [http://localhost:8080](http://localhost:8080)
 
 ## Usage
 
