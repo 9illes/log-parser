@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Access Logs</title>
+  <link href="/assets/bulma.min.css" rel="stylesheet">
+  <link href="/assets/tabulator_modern.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="container is-fluid mt-2">
+    <a href="/"><img class="image is-inline" src="/assets/logo.svg" alt="logs" height="25px" width="25px" /></a>
+    <h1 class="title is-inline ml-2">Logs <span class="is-size-7">v0.1.0</span></h1>
+    <a href="/auth/logout" class="button is-small is-pulled-right">logout</a>
+  </header>
+
+  <section class="container is-fluid mt-4">
+    <div class="box">
+      <select id="site" name="site" class="select ml-3">
+        <option value="default">Default</option>
+      </select>
+
+      <select id="journal_type" name="journal_type" class="select ml-3">
+        <option value="google">google bot</option>
+        <option value="bot">bots</option>
+        <option value="pages">pages</option>
+        <option value="assets">assets</option>
+        <option value="all">tout</option>
+      </select>
+
+      <label for="date" class="ml-2">Journée du</label>
+      <input type="date" id="date" name="date" value="2023-04-28">
+
+      <button class="button is-primary is-small ml-6" id="button-load-ajax">
+        Load Data
+        <svg class="loading-spinner ml-2 is-hidden" fill="white" width="24" height="24" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <style>
+            .spinner_b2T7 {
+              animation: spinner_xe7Q .8s linear infinite
+            }
+            .spinner_YRVV {
+              animation-delay: -.65s
+            }
+            .spinner_c9oY {
+              animation-delay: -.5s
+            }
+
+            @keyframes spinner_xe7Q {
+              93.75%,
+              100% {
+                r: 3px
+              }
+              46.875% {
+                r: .2px
+              }
+            }
+          </style>
+          <circle class="spinner_b2T7" cx="4" cy="12" r="3" />
+          <circle class="spinner_b2T7 spinner_YRVV" cx="12" cy="12" r="3" />
+          <circle class="spinner_b2T7 spinner_c9oY" cx="20" cy="12" r="3" />
+        </svg>
+      </button>
+      <br>
+    </div>
+  </section>
+
+  <section class="container is-fluid mt-4">
+    <div class="box">
+      <div class="mb-4">
+        <button class="button is-info is-light is-rounded is-small" id="group-by-ua">Grouper par user-agent</button>
+        <button class="button is-info is-light is-rounded is-small" id="group-by-ip">Grouper par IP</button>
+        <button class="button is-primary is-light is-rounded is-small" id="clear-filters">Reset</button>
+      </div>
+      <div id="logs" class="logs"></div>
+    </div>
+  </section>
+
+  <section id="memo" class="container is-fluid mt-4">
+    <ul class="box">
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers">Official Google
+          Bot user-agents</li>
+      <li><a href="https://developers.google.com/static/search/apis/ipranges/googlebot.json">Google Bot IP address
+          ranges</li>
+    </ul>
+  </section>
+
+  <script type="text/javascript" src="/assets/tabulator.min.js"></script>
+  <script type="text/javascript" src="/assets/app.js"></script>
+
+  <script>
+    var today = (new Date()).toISOString().split('T')[0];
+    document.getElementById('date').value = today;
+  </script>
+</body>
+
+</html>
